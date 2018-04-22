@@ -21,7 +21,7 @@ class Header extends React.Component {
 
   componentDidMount() {
     console.debug("Hi! Header here 👍");
-  }
+  };
 
   changeItem = event => {
     const selectedItem = event.currentTarget.name;

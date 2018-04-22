@@ -3,8 +3,8 @@ import * as React from 'react';
 import Home from './view/Home';
 
 import './styles/theme.sass';
-import Header from "./components/Header"
-
+import Header from "./components/Header";
+import Counter from "./components/Counter"
 
 const HEADER_ITEMS = [
   // { name: "Home" },
@@ -18,6 +18,7 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
       <main>
         <Header items={HEADER_ITEMS} />
         <Home username="DaftCoder" />
+        <Counter fromNum={250} toNum={243} />
       </main>
     );
   }
