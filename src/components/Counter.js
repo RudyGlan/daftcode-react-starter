@@ -42,7 +42,6 @@ class Counter extends React.Component {
       let self = this;
       const {toNum} = self.props;
       let timerId = setInterval(() => {
-        console.log(self.state.seconds);
         if(self.state.seconds>toNum){
           let seconds = self.state.seconds - 1;
           self.setState({
