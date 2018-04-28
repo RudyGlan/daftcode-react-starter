@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Header.sass";
+import logo from "../../assets/img/space_x_logo_bw_centered.png"
+import "../../styles/components/launchdetails/Header.sass";
 
 class Header extends React.Component {
   static defaultProps = {
@@ -34,18 +35,11 @@ class Header extends React.Component {
 
     return (
       <header>
-        {items.length > 0
-          ? items.map(item =>
-              <button
-                key={item.name}
-                name={item.name}
-                onClick={this.changeItem}
-                className={selectedItem === item.name ? "active" : ""}
-              >
-                {item.name.toUpperCase()}
-              </button>
-            )
-          : "no items , sorry 🤡"}
+        <div className="spacexlogo">
+          <a href="http://www.spacex.com/">
+            <img src={logo} alt="spacex_logo"/>
+          </a>
+        </div>
       </header>
     );
   }
