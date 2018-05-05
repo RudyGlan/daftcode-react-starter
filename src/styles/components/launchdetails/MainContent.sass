@@ -1,11 +1,102 @@
 @import "~styles/variables"  
 
-img 
-    width: 100%
-
+.baseInfo img
+    width: 200px
 main 
     background-color: $white
+
+.launchinfo
+    display: flex
 
 section
     margin: 0
     padding: 0
+
+h1 
+    text-transform: uppercase
+    font-weight: 600
+    font-size: 30px
+    letter-spacing: 2px
+h2 
+    text-transform: uppercase
+    color: $desert
+    letter-spacing: 10px
+    font-size: 15px
+    font-weight: normal
+
+hr 
+    background-color: $desert
+    border: 0px
+    height: 2px
+    margin-bottom: 10px
+
+.half
+    width: 50%
+
+section .rocketinfo
+    padding-bottom: 30px
+
+
+.launchlinks
+    text-transform: uppercase
+    color: white
+    margin-bottom: -5px
+    position: relative
+    img 
+        z-index: -1
+        width: 100%
+
+.sectiontable
+    display: flex
+
+.sectiontablehalf
+    border-left: 1px dashed $cool-grey
+    width: 50%
+
+.propname
+    color: $cool-grey
+    font-family: $sitefontfamily
+
+
+.propvalue
+    padding-left: 5px
+    color: $dark-grey
+    font-family: $sitefontfamily
+
+ul
+    list-style-type: none
+    padding-left: 15px
+    margin-top: 0
+    margin-bottom: 0
+    li
+        padding-bottom: 5px
+        letter-spacing: 1px
+        text-transform: uppercase
+        font-weight: 300
+        display: flex
+
+.description
+    font-family: $sitefontfamily
+    font-weight: 300
+
+.linkscontent
+    display: felx    
+    z-index: 100
+    position: absolute
+    top: 0
+
+.linkslist
+    list-style-type: none
+    color: white
+    padding: 0
+    
+    li 
+        display: inline
+        padding: 10px
+        border: 1px solid white
+        border-radius: 50px
+        margin: 10px
+
+        a
+            color: white
+            font-weight: 400

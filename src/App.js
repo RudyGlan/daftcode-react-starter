@@ -16,13 +16,13 @@ const HEADER_ITEMS = [
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <main>
+      <div>
          <LaunchDetails
           launch={launch}
           launchSite={launchSite}
           rocket={rocket}
         />
-      </main>
+      </div>
     );
   }
 }

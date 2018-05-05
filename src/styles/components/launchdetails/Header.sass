@@ -4,17 +4,31 @@ header
   background-color: $almost-black
   text-align: center
   height: 75px
-
-  button
-    background-color: #d7d7d7
-    border-radius: .5rem
-    box-shadow: #d7d7d7 0 0 2px 2px
-    border: #d7d7d7 1px solid
-    &.active
-      background-color: cornflowerblue
-      box-shadow: cornflowerblue 0 0 2px 2px
-      border: cornflowerblue 1px solid
+  display: flex
+  align-items: center
+  justify-content: space-between
 
 .spacexlogo
   img 
     width: 300px
+
+.goback
+  display: flex
+  align-items: center 
+
+.arrowline
+  width: 30px
+  margin: 0 0 0 -2px
+  padding: 0
+
+.gobacktext
+  text-transform: uppercase
+  color: $desert
+  letter-spacing: 7px
+  font-size: 12px
+  margin-left: 20px
+
+.left .right
+  flex: 1
+
+

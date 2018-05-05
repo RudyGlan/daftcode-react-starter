@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Header from "../components/launchdetails/Header";
 import MainContent from "../components/launchdetails/MainContent"
 import Footer from "../components/launchdetails/Footer";
-//import './LunchDetails.sass';
 
 class LunchDetails extends React.Component {
   static propTypes = {
@@ -16,13 +15,14 @@ class LunchDetails extends React.Component {
 
   render() {
     const {launch, launchSite, rocket} = this.props;
-    console.log(rocket);
-    console.log(launch);
-    console.log(launchSite);
+
     return (
       <div>
         <Header/>
-        <MainContent/>
+        <MainContent 
+          launch={launch}
+          launchSite={launchSite}
+          rocket={rocket}/>
         <Footer/>
       </div>
     );
