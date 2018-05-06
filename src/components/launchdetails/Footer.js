@@ -19,7 +19,7 @@ class Footer extends React.Component {
 
         </span>
         <span className="rfloat">
-            2018 space exploration technologies corp
+            2018 space exploration technologies corp.
         </span>
       </footer>
     );

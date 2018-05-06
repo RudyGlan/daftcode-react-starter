@@ -4,22 +4,30 @@ import PropTypes from "prop-types";
 import "../../styles/components/launchdetails/MainContent.sass";
 import rocketImg from "../../assets/img/rocket.png";
 import iridiumLogo from "../../assets/img/iridium-5-logo.png";
+import Counter from '../Counter';
 
 
 class MainContent extends React.Component {
 
   render() {
     const {launch, launchSite, rocket} = this.props;
-    console.log(launch)
+    let date = new Date(launch.launch_date_local);
+    console.log(`sss ${date.getDate()}`);
+    let day = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
+    let locale = "en-us";
+    let month =  date.toLocaleString(locale, { month: "long" });
+    let readydate = `${day} ${month} ${date.getFullYear()}`
+    console.log(readydate);
 
     return (
       <main>
         <article>
           <section className="launchinfo">
             <div className="baseInfo half">
-            {Date(launch.launch_date_local)}
-              <h1>{rocket.id} {launch.flight_number} launch</h1>
-              <img src={iridiumLogo} alt="iridium logo"/>
+              <span className="launchdate">{readydate}</span>
+              <h1>{rocket.id} next {launch.flight_number} launch</h1>
+              <Counter date={date}/>
+              <img src={launch.links.mission_patch} alt="iridium logo"/>
             </div>
             <div className="specificInfo half">
               <section id="details" className="rocketinfo">
@@ -75,9 +83,9 @@ class MainContent extends React.Component {
             <div className="linkscontent">
               <span className='linkstext'>mission links</span>
               <ul className='linkslist'>
-                <li><a href='#'>reddit campaign</a></li>
-                <li><a href='#'>presskit</a></li>
-                <li><a href='#'>mission video</a></li>
+                <li><a href={launch.links.reddit_campaign} target='_blank'>reddit campaign</a></li>
+                <li><a href={launch.links.presskit} target='_blank'>presskit</a></li>
+                <li><a href={launch.links.video_link} target='_blank'>mission video</a></li>
               </ul>
             </div>
           </section>

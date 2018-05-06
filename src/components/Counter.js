@@ -4,30 +4,37 @@ import PropTypes from "prop-types";
 class Counter extends React.Component {
 
     static propTypes = {
-      fromNum: PropTypes.number.isRequired,
-      toNum: PropTypes.number.isRequired,
+      date: PropTypes.object.isRequired,
     }
 
     state = {
-      timeDisplay: {s: 0, m: 0}, 
+      //date: new Date(2018/5/4),
+      timeDisplay: {s: 0, m: 0, h:0, d:0}, 
+      nowDate: new Date(),
       seconds: 0, 
       timer: '', 
       timerEnded: false,
-      timerStopped: false,
-      timerStarted: true
+      toNum: 0,
     }
 
     componentDidMount() {
-      this.state.seconds = this.props.fromNum;
+      this.setState({
+        nowDate: Date.now(),
+        //seconds: this.state.date.getTime() - this.state.nowDate
+      })
       window.addEventListener('load', this._runTimer());
       //let timeLeft = this._secondsToTime(this.state.seconds);
       //this.setState({ timeDisplay: timeLeft });
     }
 
     _secondsToTime(sec){
-      let minutes = this._minTwoDigits(Math.floor(sec / 60));
+      let days = Math.floor(sec / (60 * 60 * 24));
+      let hours =  this._minTwoDigits(Math.floor((sec%(60 * 60 * 24))/ (60 * 60)))
+      let minutes = this._minTwoDigits(Math.floor((sec%(60 * 60))/ 60));
       let seconds = this._minTwoDigits(sec%60);
       let obj = {
+        "d": days,
+        "h": hours,
         "m": minutes,
         "s": seconds
       }
@@ -40,9 +47,14 @@ class Counter extends React.Component {
 
     _runTimer(){
       let self = this;
-      const {toNum} = self.props;
+      let {nowDate} = self.state;
+      const {date} = self.props;
+      let diff = Math.floor((date - nowDate)/1000);
+      this.setState({
+        seconds: diff
+      });
       let timerId = setInterval(() => {
-        if(self.state.seconds>toNum){
+        if(diff>0){
           let seconds = self.state.seconds - 1;
           self.setState({
             timeDisplay: self._secondsToTime(seconds),
@@ -63,38 +75,14 @@ class Counter extends React.Component {
       clearInterval(this.state.timer);
       this.setState({
         timerEnded: true,
-        timerStarted: false,
-        timerStopped: false
       })
     }
 
-    _handleTimerStopStart = event => {
-      if(this.state.timerStopped){
-        console.log('Timer Started');
-        this.setState({
-          timerEnded: false,
-          timerStarted: true,
-          timerStopped: false
-        })
-        this._runTimer();
-      }
-      else if(this.state.timerStarted){
-        console.log('Timer Stopped');
-        this.setState({
-          timerEnded: false,
-          timerStarted: false,
-          timerStopped: true
-        })
-        clearInterval(this.state.timer);
-      }
-    }
-
     render() {
-      const {m, s} = this.state.timeDisplay;
+      const {d, h, m, s} = this.state.timeDisplay;
       return (
-        <div>
-          <h3 >{this.state.timeDisplay.m}:{this.state.timeDisplay.s}</h3>
-          <button onClick={this._handleTimerStopStart}>Stop/Start</button>
+        <div className='launchcounter'>
+          <h3 >{this.state.timeDisplay.d} days {this.state.timeDisplay.h} hrs {this.state.timeDisplay.m} mins {this.state.timeDisplay.s} sec to start</h3>
         </div>
       );
     }
