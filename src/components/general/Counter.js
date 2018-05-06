@@ -8,7 +8,6 @@ class Counter extends React.Component {
     }
 
     state = {
-      //date: new Date(2018/5/4),
       timeDisplay: {s: 0, m: 0, h:0, d:0}, 
       nowDate: new Date(),
       seconds: 0, 
@@ -20,11 +19,8 @@ class Counter extends React.Component {
     componentDidMount() {
       this.setState({
         nowDate: Date.now(),
-        //seconds: this.state.date.getTime() - this.state.nowDate
       })
       window.addEventListener('load', this._runTimer());
-      //let timeLeft = this._secondsToTime(this.state.seconds);
-      //this.setState({ timeDisplay: timeLeft });
     }
 
     _secondsToTime(sec){

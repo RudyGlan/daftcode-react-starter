@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from "../components/launchdetails/Header";
-import MainContent from "../components/launchdetails/MainContent"
-import Footer from "../components/launchdetails/Footer";
+import Header from "../components/structure/Header";
+import MainContent from "../components/structure/MainContent"
+import Footer from "../components/structure/Footer";
 
 class LunchDetails extends React.Component {
   static propTypes = {

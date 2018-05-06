@@ -1,0 +1,39 @@
+@import "~styles/variables"
+
+.header
+  background-color: $almost-black
+  text-align: center
+  height: 65px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.logo
+  position: absolute
+  width: 100vw
+  z-index: 10
+  &__img 
+    width: 300px
+
+.goback
+  z-index: 100
+  margin-left: 50px
+  
+  &__btn
+    display: flex
+    align-items: center 
+
+  &__arrowline
+    width: 30px
+    margin: 0 0 0 -2px
+    padding: 0
+  
+  &__text
+    text-transform: uppercase
+    color: $desert
+    letter-spacing: 8px
+    font-size: 14px
+    margin-left: 20px
+  
+  &__link
+    text-decoration: none
