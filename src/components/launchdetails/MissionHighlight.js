@@ -19,7 +19,7 @@ class MissionHighlight extends React.Component {
             <span className="highlight__date">{readydate}</span>
             <h1 className="highlight__title">{rocket.id} next {launch.flight_number} launch</h1>
             <Counter date={date}/>
-            <img classNme="highlight__img" src={launch.links.mission_patch_small} alt="mission patch"/>
+            <img className="highlight__img" src={launch.links.mission_patch_small} alt="mission patch"/>
         </div>
     );
   }
