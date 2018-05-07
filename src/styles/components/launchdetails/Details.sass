@@ -1,0 +1,58 @@
+@import "~styles/variables"
+
+section
+    margin: 0
+    padding: 0
+
+.details
+    padding-bottom: 30px
+    
+    &__title
+        text-transform: uppercase
+        color: $desert
+        letter-spacing: $header-sml-semibold-letter-spacing
+        font-size: $header-sml-semibold-size
+        font-weight: $header-sml-semibold-weight
+        margin-bottom: 15px
+    
+    &__line
+        background-color: $desert
+        border: 0px
+        height: 2px
+        margin-bottom: 10px
+    
+    &__description
+        font-weight: $basic-weight
+        font-size: $basic-size
+        letter-spacing: $basic-letter-spacing
+
+.infotable
+    display: flex
+    margin-top: 20px
+    margin-bottom: 20px
+    
+    &-half
+        border-left: 1px dashed $cool-grey
+        width: 50%
+    
+    &__props
+        list-style-type: none
+        padding-left: 15px
+        padding-right: 10px
+        margin-top: 0
+        margin-bottom: 0
+    
+    &__item
+        padding-bottom: 10px
+        letter-spacing: $basic-letter-spacing
+        text-transform: uppercase
+        font-weight: $basic-weight
+        font-size: $basic-size
+        display: flex
+
+    &__name
+        color: $cool-grey
+    
+    &__value
+        padding-left: 5px
+        color: $dark-grey

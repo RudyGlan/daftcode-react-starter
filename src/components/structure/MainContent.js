@@ -19,12 +19,12 @@ class MainContent extends React.Component {
       <main>
         <article>
           <section className="launchinfo">
-            <div className="baseInfo half">
+            <div className="baseinfo launchinfo-half">
               <MissionHighlight 
                 launch={launch} 
                 rocket={rocket}/>
             </div>
-            <div className="specificInfo half">
+            <div className="specificinfo launchinfo-half">
               <FlightDetails launch={launch}/>
               <RocketDetails rocket={rocket}/>
               <LaunchPadDetails launchSite={launchSite}/>

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import "../../styles/components/general/Counter.sass";
+
 class Counter extends React.Component {
 
     static propTypes = {
@@ -77,8 +79,8 @@ class Counter extends React.Component {
     render() {
       const {d, h, m, s} = this.state.timeDisplay;
       return (
-        <div className='launchcounter'>
-          <h3 >{this.state.timeDisplay.d} days {this.state.timeDisplay.h} hrs {this.state.timeDisplay.m} mins {this.state.timeDisplay.s} sec to start</h3>
+        <div className="launch-counter">
+          <h3 className="launch-counter__text">{this.state.timeDisplay.d} days {this.state.timeDisplay.h} hrs {this.state.timeDisplay.m} mins {this.state.timeDisplay.s} sec to start</h3>
         </div>
       );
     }

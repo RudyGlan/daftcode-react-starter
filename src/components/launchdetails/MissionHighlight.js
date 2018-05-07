@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../../styles/components/structure/MainContent.sass";
+import "../../styles/components/launchdetails/MissionHighlight.sass";
 import Counter from '../general/Counter';
 
 class MissionHighlight extends React.Component {
@@ -15,11 +15,11 @@ class MissionHighlight extends React.Component {
     let readydate = `${day} ${month} ${date.getFullYear()}`
 
     return (
-        <div id='highlight' className="baseInfo">
-            <span className="launchdate">{readydate}</span>
-            <h1>{rocket.id} next {launch.flight_number} launch</h1>
+        <div id='highlight' className="highlight">
+            <span className="highlight__date">{readydate}</span>
+            <h1 className="highlight__title">{rocket.id} next {launch.flight_number} launch</h1>
             <Counter date={date}/>
-            <img src={launch.links.mission_patch_small} alt="mission patch"/>
+            <img classNme="highlight__img" src={launch.links.mission_patch_small} alt="mission patch"/>
         </div>
     );
   }

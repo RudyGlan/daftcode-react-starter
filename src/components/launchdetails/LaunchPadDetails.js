@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../../styles/components/structure/MainContent.sass";
+import "../../styles/components/launchdetails/Details.sass";
 
 class LaunchPadDetails extends React.Component {
 
@@ -9,22 +9,22 @@ class LaunchPadDetails extends React.Component {
     const {launchSite} = this.props;
 
     return (
-        <section id="paddetails" className="rocketinfo">
-            <h2>launch pad</h2>
-            <hr/>
-            <div className="sectiontable">
-                <div className="sectiontablehalf">
-                    <ul  className="sectionpops">
-                        <li><span className="propname">name:</span><span className="propvalue">{launchSite.full_name}</span></li>
+        <section id="paddetails" className="details">
+            <h2 className="details__title">launch pad</h2>
+            <hr className="details__line"/>
+            <div className="infotable">
+                <div className="infotable-half">
+                    <ul className="infotable__props">
+                        <li className="infotable__item"><span className="infotable__name">name:</span><span className="infotable__value">{launchSite.full_name}</span></li>
                     </ul>
                 </div>
-                <div className="sectiontablehalf">
-                    <ul  className="sectionpops">
-                        <li><span className="propname">location:</span><span className="propvalue">{launchSite.location.name}, {launchSite.location.region}</span></li>
+                <div className="infotable-half">
+                    <ul className="infotable__props">
+                        <li className="infotable__item"><span className="infotable__name">location:</span><span className="infotable__value">{launchSite.location.name}, {launchSite.location.region}</span></li>
                     </ul>
                 </div>
             </div>
-            <p className="description">{launchSite.details}</p>
+            <p className="details__description">{launchSite.details}</p>
         </section>
     );
   }

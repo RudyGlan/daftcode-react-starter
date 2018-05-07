@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../../styles/components/structure/MainContent.sass";
+import "../../styles/components/launchdetails/Details.sass";
 
 class FlightDetails extends React.Component {
 
@@ -9,10 +9,10 @@ class FlightDetails extends React.Component {
     const {launch} = this.props;
 
     return (
-        <section id="flightdetails" className="rocketinfo">
-            <h2>details</h2>
-            <hr/>
-            <p className="description">{launch.details}</p>
+        <section id="flightdetails" className="details">
+            <h2 className="details__title">details</h2>
+            <hr className="details__line"/>
+            <p className="details__description">{launch.details}</p>
         </section>
     );
   }
