@@ -27,6 +27,9 @@
         
         &-details
             margin-top: 10px
+        
+        &-arrow 
+            width: 100%
 
 
     &__table
@@ -37,11 +40,15 @@
             width: 50%
             flex: 1
             padding-left: 30px
+            padding-right: 30px
             
             &-right
                 text-align: right
-                border-left: 1px dashed $metrics-column-border-color
-                padding-top: 100px
+                padding-top: 83.5px
+            
+            &-left
+                border-right: 1px dashed $metrics-column-border-color
+
 
 
 
@@ -54,7 +61,7 @@ $arrow-icon-width: 8px
     display: flex
     position: relative
     height: $arrow-icon-height
-    width: $arrow-icon-width + $arrow-icon-length
+    //width: $arrow-icon-width + $arrow-icon-length
 
     img
         height: $arrow-icon-height
@@ -82,7 +89,6 @@ $arrow-icon-width: 8px
             left: 0
             right: 5px
             height: $arrow-icon-thickness
-            width: $arrow-icon-length
             background: $brand-color-3
             transform: translateY(-$arrow-icon-thickness / 2)
         

@@ -72,7 +72,7 @@ class ListBody extends React.Component {
       return (
         <div className="chart__table">
           <div className="chart__table-column chart__table-column-left">{ tableFieldsLeft }</div>
-          { tableFieldsRight.length > 0 ? (<div className="chart__table-column chart__table-column-right">{ tableFieldsRight }</div>) : null }
+          <div className="chart__table-column chart__table-column-right">{ tableFieldsRight }</div>
         </div>
       );
     }

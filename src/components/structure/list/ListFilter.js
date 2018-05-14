@@ -3,15 +3,23 @@ import PropTypes from "prop-types";
 
 class ListHeader extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+          currentItem: 'all',
+        };
+      }
+
     onItemClick = (event) => {
         const {onChange} = this.props;
         const { name } = event.currentTarget;
+        //event.currentTarget.classList.add("list__filter-active");
+
         onChange(name);
     };
 
     render() {
         const {options, onChange} = this.props;
-        console.log(options);
         return (
         <div className="list__filter">
             <div className="list__filter-content">
