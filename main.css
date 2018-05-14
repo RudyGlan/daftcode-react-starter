@@ -265,7 +265,7 @@
     padding-right: 30px; }
     .chart__table-column-right {
       text-align: right;
-      padding-top: 83.5px; }
+      padding-top: 75px; }
     .chart__table-column-left {
       border-right: 1px dashed #a7a9ac; }
 
@@ -308,6 +308,17 @@
       -webkit-transform: rotate(180deg);
               transform: rotate(180deg); }
 
+.dot {
+  height: 6px;
+  width: 6px;
+  background-color: #a7a9ac;
+  border-radius: 3px;
+  position: absolute; }
+  .dot-left {
+    right: -33.75px; }
+  .dot-right {
+    left: -33.75px; }
+
 .list__header-content {
   min-width: 960px;
   max-width: 1440px;
@@ -341,12 +352,8 @@
 
 .list__filter-active {
   padding: 7px 33px;
-  -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(center), color-stop(cover, ellipse), color-stop(white), to(rgba(0, 0, 0, 0))) 1 100%;
-  -webkit-border-image: -webkit-linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
-       -o-border-image: -o-linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
-          border-image: -webkit-gradient(linear, left top, left bottom, from(center), color-stop(cover, ellipse), color-stop(white), to(rgba(0, 0, 0, 0))) 1 100%;
-          border-image: linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
-  border-width: thick;
+  -webkit-box-shadow: inset 0px 0px 5px 2px white;
+          box-shadow: inset 0px 0px 5px 2px white;
   border-radius: 45px;
   font-size: 14px;
   color: #ffffff;
