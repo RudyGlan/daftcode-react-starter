@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "../../styles/components/general/Counter.sass";
-
 class Counter extends React.Component {
 
     static propTypes = {
@@ -16,6 +14,7 @@ class Counter extends React.Component {
       timer: '', 
       timerEnded: false,
       toNum: 0,
+      word: '',
     }
 
     componentDidMount() {
@@ -23,6 +22,13 @@ class Counter extends React.Component {
         nowDate: Date.now(),
       })
       window.addEventListener('load', this._runTimer());
+    }
+
+    componentWillUnmount() {
+      clearInterval(this.state.timer);
+      this.setState({
+        timerEnded: true,
+      })
     }
 
     _secondsToTime(sec){
@@ -57,31 +63,38 @@ class Counter extends React.Component {
           self.setState({
             timeDisplay: self._secondsToTime(seconds),
             seconds: seconds,
+            word: 'to'
           });  
+        } else {
+          let seconds = Math.abs(self.state.seconds - 1);
+          self.setState({
+            timeDisplay: self._secondsToTime(seconds),
+            seconds: seconds,
+            word: 'from'
+          })
         }
-        else{
-				  self._handleTimerEnd();
-        } 
+        // } else {
+				//   self._handleTimerEnd();
+        // } 
       }, 1000);
       self.setState({
         timer: timerId
       });  
     }
 
-    _handleTimerEnd(){
-      console.log('Timer Ended');
-      clearInterval(this.state.timer);
-      this.setState({
-        timerEnded: true,
-      })
-    }
+    // _handleTimerEnd(){
+    //   console.log('Timer Ended');
+    //   clearInterval(this.state.timer);
+    //   this.setState({
+    //     timerEnded: true,
+    //   })
+    // }
 
     render() {
       const {d, h, m, s} = this.state.timeDisplay;
+      const {word} = this.state;
       return (
-        <div className="launch-counter">
-          <h3 className="launch-counter__text">{this.state.timeDisplay.d} days {this.state.timeDisplay.h} hrs {this.state.timeDisplay.m} mins {this.state.timeDisplay.s} sec to start</h3>
-        </div>
+        <div className="flight__highlight-countdown">{`${d} days ${h} hrs ${m} mins ${s} sec ${word} start`}</div>
       );
     }
   }

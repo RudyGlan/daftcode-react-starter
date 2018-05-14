@@ -1,0 +1,52 @@
+@import "~styles/variables"
+@import "~styles/utils/page-center"
+@import "~styles/utils/typography"
+@import "~styles/utils/buttons"
+    
+.list
+    background-color: $list-background
+    color: $list-text-color
+
+    &__header
+
+        &-content
+            @extend %page-center
+
+            background-color: $list-background
+            min-height: 500px
+            background-image: url('~assets/img/moon.png')
+            background-position: center center
+            background-size: 900px
+            background-repeat: no-repeat
+
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            text-align: center
+        
+        &-text
+            @extend %heading-style-2
+            color: $list-header-text-color
+            margin-top: 10px
+        
+    &__brand
+        width: 540px
+        margin-left: 60px
+
+    &__filter
+        &-content 
+            display: flex
+            justify-content: center
+            padding-top: 50px
+
+
+        &-button
+            @extend %button-style-2
+            margin-left: 10px
+            margin-right: 10px
+
+    &__body
+        margin: 80px 20px
+        &-content
+
+    

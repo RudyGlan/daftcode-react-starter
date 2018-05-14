@@ -1,0 +1,90 @@
+@import "~styles/variables"
+@import "~styles/utils/typography"
+
+.chart
+    &__item
+        display: flex
+        flex-direction: column
+        margin-bottom: 80px
+        &:hover
+            cursor: pointer
+
+        &-label, &-value
+            text-transform: uppercase
+
+        &-label
+            margin-right: 5px
+            color: $chart-label-color
+
+        &-line 
+            display: inline-block
+            padding: 0 10px
+            color: $chart-label-color
+        
+        &-date 
+            @extend %heading-style-3
+            margin-bottom: 10px
+        
+        &-details
+            margin-top: 10px
+
+
+    &__table
+        display: flex
+        flex-direction: row
+
+        &-column
+            width: 50%
+            flex: 1
+            padding-left: 30px
+            
+            &-right
+                text-align: right
+                border-left: 1px dashed $metrics-column-border-color
+                padding-top: 100px
+
+
+
+$arrow-icon-length: 300px
+$arrow-icon-thickness: 2px
+$arrow-icon-height: 10px
+$arrow-icon-width: 8px
+
+.icon-arrow
+    display: flex
+    position: relative
+    height: $arrow-icon-height
+    width: $arrow-icon-width + $arrow-icon-length
+
+    img
+        height: $arrow-icon-height
+        width: $arrow-icon-width
+
+    &-right
+        &:after
+            display: inline-block
+            content: ''
+            position: absolute
+            top: 50%
+            right: 0
+            left: 5px
+            height: $arrow-icon-thickness
+            background: $brand-color-3
+            transform: translateY(-$arrow-icon-thickness / 2)
+
+    &-left
+        justify-content: flex-end
+        &:before
+            display: inline-block
+            content: ''
+            position: absolute
+            top: 50%
+            left: 0
+            right: 5px
+            height: $arrow-icon-thickness
+            width: $arrow-icon-length
+            background: $brand-color-3
+            transform: translateY(-$arrow-icon-thickness / 2)
+        
+        img
+            transform: rotate(180deg)

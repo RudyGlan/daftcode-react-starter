@@ -1,29 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from "../components/structure/Header";
-import MainContent from "../components/structure/MainContent"
-import Footer from "../components/structure/Footer";
+import DetailsHeader from "../components/structure/details/DetailsHeader";
+import DetailsBody from "../components/structure/details/DetailsBody";
+import DetailsControls from "../components/structure/details/DetailsControls";
+
+import './LaunchDetails.sass';
 
 class LunchDetails extends React.Component {
-  static propTypes = {
-  }
-
-  state = {
-    welcomeText: 'Hello',
-  };
 
   render() {
-    const {launch, launchSite, rocket} = this.props;
+    const {launch, launchSite, rocket, onBackClick} = this.props;
 
     return (
-      <div>
-        <Header/>
-        <MainContent 
+      <div className="details">
+        <DetailsHeader
+          onBackClick={onBackClick}/>
+        <DetailsBody 
           launch={launch}
           launchSite={launchSite}
           rocket={rocket}/>
-        <Footer/>
+        <DetailsControls 
+          launch={launch}/>
       </div>
     );
   }
