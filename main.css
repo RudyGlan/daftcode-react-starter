@@ -245,6 +245,8 @@
     margin-bottom: 10px; }
   .chart__item-details {
     margin-top: 10px; }
+  .chart__item-arrow {
+    width: 100%; }
 
 .chart__table {
   display: -webkit-box;
@@ -259,19 +261,20 @@
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    padding-left: 30px; }
+    padding-left: 30px;
+    padding-right: 30px; }
     .chart__table-column-right {
       text-align: right;
-      border-left: 1px dashed #a7a9ac;
-      padding-top: 100px; }
+      padding-top: 83.5px; }
+    .chart__table-column-left {
+      border-right: 1px dashed #a7a9ac; }
 
 .icon-arrow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  height: 10px;
-  width: 308px; }
+  height: 10px; }
   .icon-arrow img {
     height: 10px;
     width: 8px; }
@@ -298,7 +301,6 @@
       left: 0;
       right: 5px;
       height: 2px;
-      width: 300px;
       background: #ccac5b;
       -webkit-transform: translateY(-1px);
               transform: translateY(-1px); }
@@ -337,6 +339,21 @@
   .list__filter-button:focus {
     outline: 0; }
 
+.list__filter-active {
+  padding: 7px 33px;
+  -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(center), color-stop(cover, ellipse), color-stop(white), to(rgba(0, 0, 0, 0))) 1 100%;
+  -webkit-border-image: -webkit-linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
+       -o-border-image: -o-linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
+          border-image: -webkit-gradient(linear, left top, left bottom, from(center), color-stop(cover, ellipse), color-stop(white), to(rgba(0, 0, 0, 0))) 1 100%;
+          border-image: linear-gradient(center, ellipse cover, white, rgba(0, 0, 0, 0)) 1 100%;
+  border-width: thick;
+  border-radius: 45px;
+  font-size: 14px;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #0f1112;
+  opacity: 1; }
+
 .list {
   background-color: #0f1112;
   color: #ffffff; }
@@ -373,6 +390,9 @@
             justify-content: center;
     padding-top: 50px; }
   .list__filter-button {
+    margin-left: 10px;
+    margin-right: 10px; }
+  .list__filter-active {
     margin-left: 10px;
     margin-right: 10px; }
   .list__body {
