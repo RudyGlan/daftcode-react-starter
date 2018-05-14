@@ -37,6 +37,7 @@ class ListBody extends React.Component {
               src={arrowPointerSrc}
               alt=""
             />
+            <span className="dot dot-left"></span>
           </span>
           <span className="chart__item-details">
             <span className="chart__item-label">{ `rocket:` }</span>
@@ -57,6 +58,7 @@ class ListBody extends React.Component {
                 src={arrowPointerSrc}
                 alt=""
               />
+              <span className="dot dot-right"></span>
             </span>
           </span>
           <span className="chart__item-details">

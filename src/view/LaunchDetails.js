@@ -11,7 +11,7 @@ class LunchDetails extends React.Component {
 
   render() {
     const {launch, launchSite, rocket, onBackClick} = this.props;
-
+    scroll(0,0);
     return (
       <div className="details">
         <DetailsHeader

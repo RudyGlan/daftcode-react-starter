@@ -12,9 +12,10 @@ class ListHeader extends React.Component {
 
     onItemClick = (event) => {
         const {onChange} = this.props;
-        const { name } = event.currentTarget;
-        //event.currentTarget.classList.add("list__filter-active");
-
+        const { name, id } = event.currentTarget;
+        event.currentTarget.classList.add("list__filter-active");
+        document.getElementById(this.state.currentItem).classList.remove("list__filter-active");
+        this.setState({currentItem: id});
         onChange(name);
     };
 
@@ -23,12 +24,12 @@ class ListHeader extends React.Component {
         return (
         <div className="list__filter">
             <div className="list__filter-content">
-                <button className="list__filter-button" key={'allrockets'} name={'all'} onClick={this.onItemClick}>
+                <button className="list__filter-button list__filter-active" key={'allrockets'} name={'all'} id={'all'} onClick={this.onItemClick}>
                     {`all rockets`}
                 </button>
                 {options && options.length > 0 ?
                     options.map(option => (
-                    <button className="list__filter-button"key={option} name={option} onClick={this.onItemClick}>
+                    <button className="list__filter-button" key={option} name={option} id={option} onClick={this.onItemClick}>
                         {option}
                     </button>
                 )) : null }
