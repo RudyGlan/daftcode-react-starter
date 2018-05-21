@@ -87,7 +87,7 @@ class ListBody extends React.Component {
     return (
       <div className="list__body">
         <div className="list__body-content">
-          {this.getTableSection()}
+          {this.props.launches && this.props.launches.length > 0 ? this.getTableSection() : <div className="list__noitem"><span className="list__noitem-text">sorry, no launches found</span></div>}
         </div>
       </div>
     );

@@ -32,8 +32,8 @@ class ListHeader extends React.Component {
     onItemClick = (event) => {
         const {onChange} = this.props;
         const { name, id } = event.currentTarget;
-        event.currentTarget.classList.add("list__filter-active");
         document.getElementById(this.state.currentItem).classList.remove("list__filter-active");
+        event.currentTarget.classList.add("list__filter-active");
         this.setState({currentItem: id});
         onChange(name);
     };

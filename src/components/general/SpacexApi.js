@@ -12,5 +12,5 @@ export function getAllRocketLaunches(rocket_id){
 
 export function getAllLaunches(){
     return global.fetch(`${ROOT_URL}/all`)
-    .then(response => response.json());
+        .then(response => response.json());
 }

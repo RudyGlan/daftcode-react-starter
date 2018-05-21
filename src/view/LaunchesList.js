@@ -5,7 +5,7 @@ import ListHeader from "../components/structure/list/ListHeader";
 import ListFilter from "../components/structure/list/ListFilter";
 import ListBody from "../components/structure/list/ListBody";
 
-import {getAllLaunches, getAllRocketLaunches} from '../components/general/SpacexApi'
+import {getCode, getAllLaunches, getAllRocketLaunches} from '../components/general/SpacexApi'
 import Loading from '../components/general/Loading'
 
 // import ListBody from "../components/structure/list/ListBody";
@@ -69,6 +69,7 @@ class LaunchesList extends React.Component {
     
     if(value == 'all' ) {
       getAllLaunches().then(list =>{
+
         this.setState({ 
           rocketNameFilter: '',
           isLoading: false,
@@ -77,7 +78,8 @@ class LaunchesList extends React.Component {
       })
     }
     else {
-      getAllRocketLaunches(value).then(list => {
+      getAllRocketLaunches(value)
+      .then(list => {    
         this.setState({ 
           rocketNameFilter: value,
           isLoading: false,
