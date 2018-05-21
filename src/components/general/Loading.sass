@@ -1,0 +1,24 @@
+@import "~styles/variables"
+@import "~styles/utils/page-center"
+@import "~styles/utils/typography"
+@import "~styles/utils/buttons"
+
+.loading
+    background-color: $list-background
+    color: $list-text-color
+    
+    &__content
+        @extend %page-center
+        margin: 40px
+        text-align: center
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+    &__text 
+        @extend %heading-style-2
+    
+    &__img
+        margin-left: auto
+        margin-right: auto
+        margin-top: 30px

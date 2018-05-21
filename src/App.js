@@ -10,6 +10,10 @@ import LaunchDetails from './view/LaunchDetails';
 import LaunchesList from './view/LaunchesList';
 import PageFooter from './components/structure/PageFooter';
 
+import Loading from './components/general/Loading';
+
+import {getAllLaunches} from './components/general/SpacexApi'
+
 import './styles/theme.sass';
 
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -17,6 +21,8 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
     super(props);
     this.state = {
       viewName: 'list',
+      launchesList: null,
+      isLoading: false
     };
 
     this.handleLaunchClick = this.handleLaunchClick.bind(this);
@@ -30,7 +36,7 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
       case 'list':
         return (
           <LaunchesList
-            launches={launches}
+            launches={this.state.launchesList}
             onLaunchClick={this.handleLaunchClick}
           />
         );
@@ -57,13 +63,33 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
     this.setState({ viewName: 'list' });
   }
 
+  // componentDidMount = () => {
+  //   this.setState({
+  //     isLoading: true
+  //   })
+  //   getAllLaunches().then(list => {
+  //     console.log(list);
+  //     this.setState({
+  //       launchesList: list,
+  //       isLoading: false
+  //     })
+  //   });
+  // }
+
   render() {
     return (
       <main className='page-container'>
+      {this.state.isLoading ? 
         <div className='page-content'>
-          {this.activeViewComponent}
-        </div>
-        <PageFooter />
+          <Loading/>
+        </div> : 
+        <div>
+          <div className='page-content'>
+            {this.activeViewComponent}
+          </div>
+          <PageFooter />
+        </div>}
+
       </main>
     );
   }

@@ -9,6 +9,25 @@ class ListHeader extends React.Component {
           currentItem: 'all',
         };
       }
+    
+    // get availableRocketNames() {
+    //     const {launches} = this.state;
+
+    //     let rocketSet = new Set();
+    //     const rocketNames = [];
+        
+    //     launches.map(flight => {
+    //         rocketSet.add(flight.rocket.rocket_name);
+    //     });
+    //     rocketSet.forEach(name => {
+    //         rocketNames.push(name);
+    //     })
+    //     return rocketNames;
+    // }
+    
+    componentDidMount(){
+        document.getElementById('all').classList.add("list__filter-active");
+    }
 
     onItemClick = (event) => {
         const {onChange} = this.props;
@@ -24,13 +43,16 @@ class ListHeader extends React.Component {
         return (
         <div className="list__filter">
             <div className="list__filter-content">
-                <button className="list__filter-button list__filter-active" key={'allrockets'} name={'all'} id={'all'} onClick={this.onItemClick}>
+                {/* <button className="list__filter-button list__filter-active" key={'allrockets'} name={'all'} id={'all'} onClick={this.onItemClick}>
                     {`all rockets`}
                 </button>
+                <button className="list__filter-button" key={'falcon10'} name={'falcon10'} id={'falcon10'} onClick={this.onItemClick}>
+                    {`falcon10`}
+                </button> */}
                 {options && options.length > 0 ?
                     options.map(option => (
-                    <button className="list__filter-button" key={option} name={option} id={option} onClick={this.onItemClick}>
-                        {option}
+                    <button className="list__filter-button" key={option.id} name={option.id} id={option.id} onClick={this.onItemClick}>
+                        {option.name}
                     </button>
                 )) : null }
             </div>

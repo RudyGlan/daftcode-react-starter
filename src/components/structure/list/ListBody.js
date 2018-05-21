@@ -18,7 +18,7 @@ class ListBody extends React.Component {
   getTableSection() {
     const {launches, onLaunchClick} = this.props;
 
-    if (launches.length > 0) {
+    if (launches && launches.length > 0) {
       let leftItems =[];
       let rightItems =[];
 
