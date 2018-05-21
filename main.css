@@ -1,4 +1,37 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+.error__content {
+  min-width: 960px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.error__text {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 9px; }
+
+.error {
+  background-color: #0f1112;
+  color: #ffffff; }
+  .error__content {
+    margin: 40px;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .error__img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px; }
+
 .metrics__header {
   margin: 0;
   font-size: 14px;
