@@ -1,18 +1,13 @@
 import { hot } from 'react-hot-loader';
 import * as React from 'react';
 
-import launch from './assets/sample_json/launch.json';
-import launchSite from './assets/sample_json/launch_site.json';
-import rocket from './assets/sample_json/rocket.json';
-import launches from './assets/sample_json/launches.json';
-
 import LaunchDetails from './view/LaunchDetails';
 import LaunchesList from './view/LaunchesList';
 import PageFooter from './components/structure/PageFooter';
 
 import Loading from './components/general/Loading';
 
-import {getAllLaunches} from './components/general/SpacexApi'
+import {getLaunchByNumber, getUpcomingLaunchByNumber, getAllLaunches, getRocketById, getLaunchpadById} from './components/general/SpacexApi'
 
 import './styles/theme.sass';
 
@@ -22,6 +17,9 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
     this.state = {
       viewName: 'list',
       launchesList: null,
+      actvieLaunch: null,
+      activeRocket: null,
+      activeLaunchPad: null,
       isLoading: false
     };
 
@@ -44,9 +42,9 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
       case 'details':
         return (
           <LaunchDetails
-            launch={launch}
-            launchSite={launchSite}
-            rocket={rocket}
+            launch={this.state.actvieLaunch}
+            launchSite={this.state.activeLaunchPad}
+            rocket={this.state.activeRocket}
             onBackClick={this.handleBackClick}
           />
         );
@@ -55,26 +53,37 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
     }
   }
 
-  handleLaunchClick() {
-    this.setState({ viewName: 'details' });
+  handleLaunchClick(key) {
+    this.setState({isLoading: true});
+    getLaunchByNumber(key).then(launch => {
+      if(launch && launch.length >0 ){
+        this.setState({ 
+          actvieLaunch: launch[0]
+        })
+        getRocketById(launch[0].rocket.rocket_id).then(rocket => {
+          this.setState({ 
+            activeRocket: rocket
+          })
+        })
+        getLaunchpadById(launch[0].launch_site.site_id).then(pad => {
+          this.setState({ 
+            viewName: 'details',
+            isLoading: false,
+            activeLaunchPad: pad
+          })
+        })
+      } else {
+        this.setState({ 
+          viewName: 'details',
+          isLoading: false,
+        })
+      }
+    })
   }
 
   handleBackClick() {
     this.setState({ viewName: 'list' });
   }
-
-  // componentDidMount = () => {
-  //   this.setState({
-  //     isLoading: true
-  //   })
-  //   getAllLaunches().then(list => {
-  //     console.log(list);
-  //     this.setState({
-  //       launchesList: list,
-  //       isLoading: false
-  //     })
-  //   });
-  // }
 
   render() {
     return (

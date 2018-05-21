@@ -10,21 +10,6 @@ class ListHeader extends React.Component {
         };
       }
     
-    // get availableRocketNames() {
-    //     const {launches} = this.state;
-
-    //     let rocketSet = new Set();
-    //     const rocketNames = [];
-        
-    //     launches.map(flight => {
-    //         rocketSet.add(flight.rocket.rocket_name);
-    //     });
-    //     rocketSet.forEach(name => {
-    //         rocketNames.push(name);
-    //     })
-    //     return rocketNames;
-    // }
-    
     componentDidMount(){
         document.getElementById('all').classList.add("list__filter-active");
     }

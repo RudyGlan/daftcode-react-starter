@@ -15,8 +15,11 @@ class ListBody extends React.Component {
     return readydate;
   }
 
+  handleLaunchClick = (event) => {
+    this.props.onLaunchClick(event.currentTarget.id);
+  }
   getTableSection() {
-    const {launches, onLaunchClick} = this.props;
+    const {launches} = this.props;
 
     if (launches && launches.length > 0) {
       let leftItems =[];
@@ -30,7 +33,7 @@ class ListBody extends React.Component {
       }
 
       const tableFieldsLeft = leftItems.map(item => (
-        <div className="chart__item" key={item.flight_number} onClick={onLaunchClick}>
+        <div className="chart__item" id={item.flight_number} key={item.flight_number} onClick={this.handleLaunchClick}>
           <span className="chart__item-date">{ `${this.getDate(item.launch_date_local)}` }</span>
           <span className="chart__item-arrow icon-arrow icon-arrow-left">
             <img
@@ -50,7 +53,7 @@ class ListBody extends React.Component {
       ));
       
       const tableFieldsRight = rightItems.map(item => (
-        <div className="chart__item" key={item.flight_number} onClick={onLaunchClick}>
+        <div className="chart__item" id={item.flight_number} key={item.flight_number} onClick={this.handleLaunchClick}>
           <span className="chart__item-date">{ `${this.getDate(item.launch_date_local)}` }</span>
           <span className="chart__item-arrow">
             <span className="icon-arrow icon-arrow-right">

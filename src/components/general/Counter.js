@@ -66,7 +66,7 @@ class Counter extends React.Component {
             word: 'to'
           });  
         } else {
-          let seconds = Math.abs(self.state.seconds - 1);
+          let seconds = Math.abs(self.state.seconds) + 1;
           self.setState({
             timeDisplay: self._secondsToTime(seconds),
             seconds: seconds,

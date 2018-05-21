@@ -6,9 +6,13 @@ import Metrics from '../general/Metrics';
 class FlightDescription extends React.Component {
 
   render() {
-    const {launch, launchSite, rocket} = this.props;
-
-    const rocketMetrics = [
+    const {launch, rocket, launchSite} = this.props;
+    let rocketMetrics, launchPadMetrics;
+    if(launch && rocket && launchSite){
+      console.log(launch);
+      console.log(rocket);
+      console.log(launchSite);
+    rocketMetrics = [
         { label: 'Name', value: rocket.name },
         { label: 'Company', value: rocket.company },
         { label: 'Height', value: `${rocket.height.meters}M / ${rocket.height.feet}FT` },
@@ -20,16 +24,19 @@ class FlightDescription extends React.Component {
         { label: 'Cost per launch', value: `$${rocket.cost_per_launch}` },
       ];
     
-      const launchPadMetrics = [
+      launchPadMetrics = [
         { label: 'Name', value: launchSite.full_name },
         { label: 'Location', value: launchSite.location.name },
       ];
-
+    }
     return (
-        <div className="flight__description">
+      <div className="flight__description">
+        {launch && rocket && launchSite ? 
+        <div >
               <Metrics title="Details" description={launch.details} />
               <Metrics title="Rocket" items={rocketMetrics} description={rocket.description} />
               <Metrics title="Launch pad" items={launchPadMetrics} description={launchSite.details} />
+        </div> : 'nope' }
         </div>
     );
   }

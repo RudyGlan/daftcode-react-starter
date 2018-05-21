@@ -5,7 +5,7 @@ import ListHeader from "../components/structure/list/ListHeader";
 import ListFilter from "../components/structure/list/ListFilter";
 import ListBody from "../components/structure/list/ListBody";
 
-import {getCode, getAllLaunches, getAllRocketLaunches} from '../components/general/SpacexApi'
+import {getLaunchById, getAllLaunches, getAllRocketLaunches} from '../components/general/SpacexApi'
 import Loading from '../components/general/Loading'
 
 // import ListBody from "../components/structure/list/ListBody";
@@ -45,10 +45,6 @@ class LaunchesList extends React.Component {
     rocketNames.push({id: 'falcon10', name: 'falcon 10'});
     rocketNames.push({id: 'falconheavy', name: 'falcon heavy'});
     return rocketNames;
-  }
-
-  getLaunches() {
-
   }
 
   // get filteredLaunches(){
