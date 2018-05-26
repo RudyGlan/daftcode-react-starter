@@ -6,12 +6,9 @@ import Metrics from '../general/Metrics';
 class FlightDescription extends React.Component {
 
   render() {
-    const {launch, rocket, launchSite} = this.props;
+    const {launch, rocket, launchSite, isError} = this.props;
     let rocketMetrics, launchPadMetrics;
-    if(launch && rocket && launchSite){
-      console.log(launch);
-      console.log(rocket);
-      console.log(launchSite);
+    if(!isError){
     rocketMetrics = [
         { label: 'Name', value: rocket.name },
         { label: 'Company', value: rocket.company },
@@ -31,12 +28,12 @@ class FlightDescription extends React.Component {
     }
     return (
       <div className="flight__description">
-        {launch && rocket && launchSite ? 
+        {!isError ?
         <div >
               <Metrics title="Details" description={launch.details} />
               <Metrics title="Rocket" items={rocketMetrics} description={rocket.description} />
               <Metrics title="Launch pad" items={launchPadMetrics} description={launchSite.details} />
-        </div> : 'nope' }
+        </div> : null}
         </div>
     );
   }

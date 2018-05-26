@@ -16,22 +16,23 @@ import FlightDescription from "../../launchdetails/FlightDescription";
 class DetailsBody extends React.Component {
 
   render() {
-    const {launch, launchSite, rocket} = this.props;
+    const {launch, launchSite, rocket, isError, errorStatus} = this.props;
 
     return (
       <div>
-        {launch && launchSite && rocket ? 
+        {!isError ? 
       <div className="details__body">
         <div className="details__body-content">
           <div className="flight">
-            <FlightHighlight launch={launch}/>
+            <FlightHighlight launch={launch} isError={isError}/>
             <FlightDescription 
                   launch={launch} 
                   rocket={rocket}
-                  launchSite={launchSite}/>
+                  launchSite={launchSite} 
+                  isError={isError}/>
           </div>
         </div>
-      </div> : <Error/>}
+      </div> : <Error status={errorStatus}/>}
 
       </div>
     );

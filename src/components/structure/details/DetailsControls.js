@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 class DetailsControls extends React.Component {
 
   render() {
-    const {launch} = this.props;
+    const {launch, isError} = this.props;
 
     return (
         <div>
-        {launch ? 
+        {!isError ? 
         <div className="details__controls">
             <div className="details__controls-content">
                 <h1 className="details__controls-title">Mission links</h1>
@@ -24,7 +24,7 @@ class DetailsControls extends React.Component {
                     </li>
                 </ul>
             </div>
-        </div> :''}
+        </div> : null}
         </div>
     );
   }

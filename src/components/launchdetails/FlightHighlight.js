@@ -7,7 +7,7 @@ import Counter from '../general/Counter';
 class FlightHighlight extends React.Component {
 
   render() {
-    const {launch} = this.props;
+    const {launch, isError} = this.props;
     let rocket_name = launch.rocket.rocket_name || "";
     
     let date = new Date(launch.launch_date_local);
@@ -20,13 +20,13 @@ class FlightHighlight extends React.Component {
       
 
       <section className="flight__highlight">
-      {launch ? 
+      {!isError ? 
         <div>
           <span className="flight__highlight-date">{readydate}</span>
           <h1 className="flight__highlight-name">{`${rocket_name} launch`}</h1>
           <Counter date={date}/>
           <img className="flight__highlight-patch" src={launch.links.mission_patch_small} alt="mission patch"/> 
-        </div> : 'nope'
+        </div> : null
       }
       </section> 
 

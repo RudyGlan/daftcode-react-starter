@@ -28,12 +28,6 @@ class ListHeader extends React.Component {
         return (
         <div className="list__filter">
             <div className="list__filter-content">
-                {/* <button className="list__filter-button list__filter-active" key={'allrockets'} name={'all'} id={'all'} onClick={this.onItemClick}>
-                    {`all rockets`}
-                </button>
-                <button className="list__filter-button" key={'falcon10'} name={'falcon10'} id={'falcon10'} onClick={this.onItemClick}>
-                    {`falcon10`}
-                </button> */}
                 {options && options.length > 0 ?
                     options.map(option => (
                     <button className="list__filter-button" key={option.id} name={option.id} id={option.id} onClick={this.onItemClick}>

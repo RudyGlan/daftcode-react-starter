@@ -7,10 +7,13 @@ import ListBody from "../components/structure/list/ListBody";
 
 import {getLaunchById, getAllLaunches, getAllRocketLaunches} from '../components/general/SpacexApi'
 import Loading from '../components/general/Loading'
+import Error from '../components/general/Error'
+
 
 // import ListBody from "../components/structure/list/ListBody";
 
 import './LaunchesList.sass';
+
 
 class LaunchesList extends React.Component {
 
@@ -19,7 +22,9 @@ class LaunchesList extends React.Component {
     this.state = {
       rocketNameFilter: '',
       filteredLaunches: null,
-      isLoading: false
+      isLoading: false,
+      isError: false,
+      errorStatus: ''
     };
 
     this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -60,29 +65,31 @@ class LaunchesList extends React.Component {
     this.handleFilterChange('all');
   }
 
-  handleFilterChange(value) {
+  async handleFilterChange(value) {
     this.setState({isLoading: true});
-    
+    let response;
     if(value == 'all' ) {
-      getAllLaunches().then(list =>{
+      response = await getAllLaunches();
+    } else {
+      response = await getAllRocketLaunches(value); 
+    }
 
-        this.setState({ 
-          rocketNameFilter: '',
-          isLoading: false,
-          filteredLaunches: list
-        });
+    if(response.status >= 300){
+      this.setState({ 
+        rocketNameFilter: value,
+        isLoading: false,
+        isError: true,
+        filteredLaunches: response.data,
+        errorStatus: response.status
+      })
+    } else {
+      this.setState({ 
+        rocketNameFilter: value,
+        isLoading: false,
+        isError: false,
+        filteredLaunches: response.data
       })
     }
-    else {
-      getAllRocketLaunches(value)
-      .then(list => {    
-        this.setState({ 
-          rocketNameFilter: value,
-          isLoading: false,
-          filteredLaunches: list
-        })
-      })
-    };
   }
 
   render() {
@@ -94,7 +101,7 @@ class LaunchesList extends React.Component {
           options={this.availableRocketNames}
           onChange={this.handleFilterChange}
         />
-        {this.state.isLoading ? <Loading/> : 
+        {this.state.isLoading ? <Loading/> : this.state.isError ? <Error status={this.state.errorStatus}/> :
         <ListBody 
           launches={this.state.filteredLaunches}
           onLaunchClick={onLaunchClick}/>

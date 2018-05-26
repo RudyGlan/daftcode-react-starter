@@ -1,8 +1,19 @@
 {
   "presets": [
-    "env",
+    ["env", {
+      "targets": {
+        "browsers": [
+          ">025%",
+          "not ie 11",
+          "not op_mini all"
+        ]
+      }
+    }],
     "react",
     "stage-2"
   ],
-  "plugins": ["emotion"]
+  "plugins": [
+    "emotion",
+    "transform-decorators-legacy"
+  ]
 }

@@ -13,7 +13,7 @@ class Error extends React.Component {
     return (
       <div className='error'>
         <div className='error__content'>
-            <span className='error__text'>Something went wrong ... here is a space cat to cheer you up!</span>
+            <span className='error__text'>{`Error ${this.props.status}: Something went wrong ... here is a space cat to cheer you up!`}</span>
             <div className='error__img'>
                 <img src={cat} />
             </div>

@@ -37,22 +37,6 @@ class DetailsHeader extends React.Component {
           <div className="details__header-side" />
         </div>
       </div>
-
-      //   <div className="goback">
-      //     <a className="goback__link" href="#" onClick={onBackClick}>
-      //       <div className="goback__btn">
-      //         <img className="goback__arrowhead" src={arrow} alt="<arrow<"/>
-      //         <hr className="goback__arrowline"/>
-      //         <span className="goback__text">go back</span>
-      //       </div>
-      //     </a>
-      //   </div>
-      //   <div className="logo">
-      //     <a href="http://www.spacex.com/">
-      //       <img className="logo__img" src={logo} alt="spacex_logo"/>
-      //     </a>
-      //   </div>
-      // </div>
     );
   }
 }
