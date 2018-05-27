@@ -2,8 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import arrowPointerSrc from '../../../assets/img/arrow_pointer.png';
 import './ListBody.sass';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
-
+@inject('MainStore')
+@observer
 class ListBody extends React.Component {
 
   getDate(value){
@@ -15,11 +18,15 @@ class ListBody extends React.Component {
     return readydate;
   }
 
+  @action.bound
   handleLaunchClick = (event) => {
-    this.props.onLaunchClick(event.currentTarget.id);
+    const { MainStore } = this.props;
+   // this.props.onLaunchClick(event.currentTarget.id);
+    MainStore.getLaunchId(event.currentTarget.id);
   }
+
   getTableSection() {
-    const {launches} = this.props;
+    const launches = this.props.MainStore.listState.launchesData;
 
     if (launches && launches.length > 0) {
       let leftItems =[];
@@ -86,11 +93,11 @@ class ListBody extends React.Component {
   }
 
   render() {
-    const {launches, onLaunchClick} = this.props;
+    const launches = this.props.MainStore.listState.launchesData;
     return (
       <div className="list__body">
         <div className="list__body-content">
-          {this.props.launches && this.props.launches.length > 0 ? this.getTableSection() : <div className="list__noitem"><span className="list__noitem-text">sorry, no launches found</span></div>}
+          {launches && launches.length > 0 ? this.getTableSection() : <div className="list__noitem"><span className="list__noitem-text">sorry, no launches found</span></div>}
         </div>
       </div>
     );

@@ -2,13 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Metrics from '../general/Metrics';
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
+@inject('MainStore')
+@observer
 class FlightDescription extends React.Component {
 
   render() {
-    const {launch, rocket, launchSite, isError} = this.props;
+    const {launch, rocket, launchSite, isError} = this.props.MainStore.listState;
     let rocketMetrics, launchPadMetrics;
-    if(!isError){
+    if(!isError && launch && rocket && launchSite){
     rocketMetrics = [
         { label: 'Name', value: rocket.name },
         { label: 'Company', value: rocket.company },
@@ -28,7 +32,7 @@ class FlightDescription extends React.Component {
     }
     return (
       <div className="flight__description">
-        {!isError ?
+        {!isError && launch && rocket && launchSite ?
         <div >
               <Metrics title="Details" description={launch.details} />
               <Metrics title="Rocket" items={rocketMetrics} description={rocket.description} />

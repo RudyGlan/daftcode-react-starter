@@ -1,26 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-//import "../../styles/components/launchdetails/MissionHighlight.sass";
 import Counter from '../general/Counter';
 
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
+
+@inject('MainStore')
+@observer
 class FlightHighlight extends React.Component {
 
   render() {
-    const {launch, isError} = this.props;
-    let rocket_name = launch.rocket.rocket_name || "";
+    const {launch, isError} = this.props.MainStore.listState;
+    let date, day, month, readydate, rocket_name;
+    if(!isError && launch){
+      rocket_name = launch.rocket.rocket_name || "";
     
-    let date = new Date(launch.launch_date_local);
-    let day = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
-    let locale = "en-us";
-    let month =  date.toLocaleString(locale, { month: "long" });
-    let readydate = `${day} ${month} ${date.getFullYear()}`
+      date = new Date(launch.launch_date_local);
+      day = date.getDate() < 10 ? '0'+ date.getDate() : date.getDate();
+      let locale = "en-us";
+      month =  date.toLocaleString(locale, { month: "long" });
+      readydate = `${day} ${month} ${date.getFullYear()}`
+    }
 
     return (
       
-
       <section className="flight__highlight">
-      {!isError ? 
+      {!isError && launch ? 
         <div>
           <span className="flight__highlight-date">{readydate}</span>
           <h1 className="flight__highlight-name">{`${rocket_name} launch`}</h1>

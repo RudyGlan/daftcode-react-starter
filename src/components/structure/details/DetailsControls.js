@@ -1,14 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { observable, action } from 'mobx';
+import { observer, inject } from 'mobx-react';
 
+@inject('MainStore')
+@observer
 class DetailsControls extends React.Component {
 
   render() {
-    const {launch, isError} = this.props;
-
+    const {isError, launch} = this.props.MainStore.listState;
     return (
         <div>
-        {!isError ? 
+        {!isError && launch ? 
         <div className="details__controls">
             <div className="details__controls-content">
                 <h1 className="details__controls-title">Mission links</h1>
