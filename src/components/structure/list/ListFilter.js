@@ -9,13 +9,11 @@ class ListHeader extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-          currentItem: 'all',
-        };
       }
     
     componentDidMount(){
-        document.getElementById('all').classList.add("list__filter-active");
+        this.props.MainStore.setFilter(this.props.MainStore.rocketFilter);
+        document.getElementById(this.props.MainStore.rocketFilter).classList.add("list__filter-active");
     }
 
     get availableRocketNames() {
@@ -32,9 +30,8 @@ class ListHeader extends React.Component {
     onItemClick = (event) => {
         const {MainStore} = this.props;
         const { name, id } = event.currentTarget;
-        document.getElementById(this.state.currentItem).classList.remove("list__filter-active");
+        document.getElementById(MainStore.rocketFilter).classList.remove("list__filter-active");
         event.currentTarget.classList.add("list__filter-active");
-        this.setState({currentItem: id});
         MainStore.setFilter(name);
     };
 
